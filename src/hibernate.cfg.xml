@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- Database connection settings -->
+		
+		<!-- JDBC driver -->
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		
+		<!-- URL -->
+		<property name="connection.url">jdbc:mysql://localhost:3306/house</property>
+		
+		<!-- Username -->
+		<property name="connection.username">root</property>
+		
+		<!-- Password -->
+		<property name="connection.password">p123456</property>
+		
+		<!-- Dialect -->
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		
+		<!-- Show sql? -->
+		<property name="show_sql">true</property>
+		
+		<!-- Format sql? -->
+		<property name="format_sql">true</property>
+		
+		<!-- Auto update table scheme -->
+		<property name="hbm2ddl.auto">update</property>
+		
+		<!-- Mapping file -->
+		<!-- <mapping resource="cn/jbit/house/entity/District.hbm.xml"/>
+		<mapping resource="cn/jbit/house/entity/Street.hbm.xml"/> -->
+		<mapping resource="cn/jbit/house/entity/House.hbm.xml"/>
+		<mapping resource="cn/jbit/house/entity/User.hbm.xml"/>
+		<mapping resource="cn/jbit/house/entity/Type.hbm.xml"/>
+		<mapping class="cn.jbit.house.entity.District"/>
+		<mapping class="cn.jbit.house.entity.Street"/>
+		
+	</session-factory>
+</hibernate-configuration>

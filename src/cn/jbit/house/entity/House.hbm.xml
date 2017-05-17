@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping 
+	PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Mapping package -->
+<hibernate-mapping package="cn.jbit.house.entity">
+	<!-- Mapping table -->
+	<class name="House" table="house">
+		<!-- Mapping column -->
+		<id name="id">
+			<column name="id"/>
+			<generator class="native"></generator>
+		</id>
+		<property name="name">
+			<column name="name" not-null="true"/>
+		</property>
+		<property name="price">
+			<column name="price"/>
+		</property>
+		<property name="pubdate">
+			<column name="pubdate"/>
+		</property>
+		<many-to-one name="street" class="Street">
+			<column name="street_id"/>
+		</many-to-one>
+		<many-to-one name="user" class="User">
+			<column name="user_id"/>
+		</many-to-one>
+		<many-to-one name="type" class="Type">
+			<column name="type_id"/>
+		</many-to-one>
+	</class>
+	<query name="findHouse">
+		from House h where h.street.name = :name 
+	</query>
+	<sql-query name="selectHouse">
+		select h.* from House h, Street s where h.street_id = s.id and s.name = :name
+		<return alias="h" class="cn.jbit.house.entity.House"/>
+	</sql-query>
+</hibernate-mapping>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping 
+	PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Mapping package -->
+<hibernate-mapping package="cn.jbit.house.entity">
+	<!-- Mapping table -->
+	<class name="User" table="user">
+		<!-- Mapping column -->
+		<id name="id">
+			<column name="id"/>
+			<generator class="native"></generator>
+		</id>
+		<property name="username">
+			<column name="username" not-null="true"/>
+		</property>
+		<property name="password">
+			<column name="password" not-null="true"/>
+		</property>
+		<property name="telephone">
+			<column name="telephone"/>
+		</property>
+		<set name="houses" inverse="true" cascade="save-update">
+			<key column="user_id"/>
+			<one-to-many class="House"/>
+		</set>
+	</class>
+</hibernate-mapping>

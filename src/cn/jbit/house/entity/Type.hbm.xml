@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping 
+	PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Mapping package -->
+<hibernate-mapping package="cn.jbit.house.entity">
+	<!-- Mapping table -->
+	<class name="Type" table="type">
+		<!-- Mapping column -->
+		<id name="id">
+			<column name="id"/>
+			<generator class="native"/>
+		</id>
+		<property name="name">
+			<column name="name" not-null="true"/>
+		</property>
+		<set name="houses" inverse="true" cascade="save-update">
+			<key column="type_id"/>
+			<one-to-many class="House"/>
+		</set>
+	</class>
+</hibernate-mapping>
